@@ -81,4 +81,31 @@ are evaluated.
 The values of `p` and `q` are searched from:
 
 ```python
-range(0, 4)# Time-Series-Forecasting
+range(0, 4)
+
+## Results
+
+The ARIMA models were evaluated on the held-out 20% test dataset using
+RMSE and R². The ARIMA `(p,d,q)` parameters were selected based on the
+lowest AIC among the tested parameter combinations.
+
+| Variable | Differencing (d) | Best ARIMA Model | AIC | RMSE | R² |
+|----------|------------------:|------------------|----:|-----:|---:|
+| Open     | 1 | (0, 1, 3) | 2648.6119 | 0.8815 | 0.9466 |
+| High     | 1 | (1, 1, 3) | 2334.8879 | 0.8714 | 0.9482 |
+| Low      | 1 | (0, 1, 3) | 2531.2240 | 0.8532 | 0.9495 |
+| Close    | 1 | (0, 1, 3) | 2545.8345 | 0.8922 | 0.9451 |
+
+### Key Observations
+
+- The `open`, `high`, `low`, and `close` series were initially
+  non-stationary and required first-order differencing (`d=1`).
+- The `low` variable achieved the lowest RMSE (0.8532) and highest R²
+  (0.9495) among the evaluated variables.
+- The `high` variable achieved an R² of 0.9482 with an RMSE of 0.8714.
+- The selected ARIMA models achieved R² values above 0.94 for all four
+  evaluated price variables.
+- Forecasting was performed using walk-forward one-step-ahead prediction,
+  where each newly observed actual value was incorporated into the history
+  before generating the next prediction.
+
