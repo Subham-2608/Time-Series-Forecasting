@@ -8,7 +8,7 @@ from statsmodels.tsa.stattools import adfuller
 from statsmodels.tsa.arima.model import ARIMA
 
 ##### Read Data
-df = pd.read_csv("C:/Users/searc/Documents/Company/TIME FORECASTING/all_stocks_5yr.csv")
+df = pd.read_csv("File Path")
 for dirname, _,filenames in os.walk("C:/Users/searc/Documents/Company/TIME FORECASTING"):
     for filename in filenames:
         print(os.path.join(dirname, filename))
